@@ -7,11 +7,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Favicon (Q-Cube Logo as SVG Data URL) -->
-<!-- Using a data URL for SVG means the SVG code itself is in the href, no separate file needed for the favicon. -->
-<!-- This SVG is a simplified version for small favicon display. -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3C!-- Isometric Cube Faces --%3E%3Cpolygon points='10,60 60,60 60,10 10,10' fill='%23FFFFF0' stroke='%23000000' stroke-width='3'/%3E%3Cpolygon points='10,10 35,0 85,0 60,10' fill='%23F0F0F0' stroke='%23000000' stroke-width='3'/%3E%3Cpolygon points='60,10 85,0 85,50 60,60' fill='%23E0E0E0' stroke='%23000000' stroke-width='3'/%3E%3Ctext x='35' y='45' font-family='Arial Black' font-size='40' fill='%23000000' text-anchor='middle' dominant-baseline='middle'%3EQ%3C/text%3E%3C/svg%3E">
-
+<!-- Favicon (Updated to your multicolored 'Q' image file) -->
+<link rel="icon" type="image/png" href="q_favicon.png">
 
 <!-- Google Fonts for a vibrant, fun feel -->
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Luckiest+Guy&display=swap" rel="stylesheet" />
@@ -50,29 +47,21 @@
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Pronounced shadow */
     text-shadow: 3px 3px 5px rgba(0,0,0,0.3); /* Text shadow for pop */
-    display: flex; /* IMPORTANT: Use flexbox to align logo, mascot, and text */
+    display: flex; /* Use flexbox to align mascot and text */
     align-items: center; /* Vertically center items */
     justify-content: center; /* Horizontally center content */
-    gap: 15px; /* Space between logo elements and text */
+    gap: 15px; /* Space between mascot and text */
   }
 
   /* Quizzy Mascot (SVG embedded) Styling in Header */
   header .quizzy-svg {
     height: 70px;
-    /* Position: absolute and transform removed as flexbox handles alignment */
     animation: wave 1.2s infinite ease-in-out; /* Lively wave animation */
-  }
-
-  /* NEW: Q-Cube Logo Styling in Header */
-  header .q-cube-svg {
-    height: 65px; /* Adjust size as needed */
-    min-width: 65px; /* Ensure it has minimum width */
-    display: block; /* Ensures it's treated as a block element for sizing */
   }
 
   /* Keyframe animation for Quizzy's subtle wave */
   @keyframes wave {
-    0%, 100% { transform: rotate(0deg);} /* Adjusted for flexbox, removed translateY */
+    0%, 100% { transform: rotate(0deg);}
     50% { transform: rotate(8deg);} /* More pronounced tilt */
   }
 
@@ -135,7 +124,7 @@
     max-width: 680px;
     margin: 2.5rem auto;
     background-color: #FFFFF0; /* Very light sunny yellow for quiz background */
-    border-radius: 15px; /* Rounded corners */
+    border-radius: 15px;
     padding: 30px 40px;
     box-shadow: 0 6px 20px rgba(211, 211, 255, 0.3); /* Lavender-tinted shadow */
     border: 3px solid #00FFFF; /* Teal border */
@@ -247,14 +236,6 @@
     animation: wave 1.2s infinite ease-in-out;
   }
 
-  /* NEW: Q-Cube Logo Styling in Footer - to match header */
-  footer .q-cube-svg {
-    height: 30px; /* Smaller for footer */
-    vertical-align: middle;
-    margin-right: 10px; /* Space between Q-cube and text */
-    display: inline-block; /* Keep it inline with text */
-  }
-
   /* Responsive Adjustments for Tablets */
   @media (max-width: 768px) {
     header {
@@ -262,22 +243,12 @@
       flex-direction: column; /* Stack items vertically on smaller screens */
       gap: 5px; /* Reduce gap */
     }
-    header .quizzy-svg, header .q-cube-svg {
+    header .quizzy-svg {
       height: 55px; /* Adjust size for tablet */
       position: static; /* Remove absolute positioning */
       transform: none; /* Remove transform */
       margin: 0; /* Remove specific margins */
     }
-    header .q-cube-svg {
-      order: 1; /* Place Q-cube first on top */
-    }
-    header .quizzy-svg {
-      order: 3; /* Place Quizzy mascot last */
-    }
-    header h1 { /* If you add h1 inside header */
-      order: 2; /* Place title in middle */
-    }
-
     h1 {
       font-size: 2.2rem;
     }
@@ -312,16 +283,18 @@
     header {
       font-size: 2rem;
       padding: 1rem 0;
-      gap: 5px; /* Smaller gap */
+      flex-direction: column;
+      gap: 5px;
     }
-    header .quizzy-svg, header .q-cube-svg {
-      height: 40px; /* Smaller for mobile */
+    header .quizzy-svg {
+      height: 40px;
+      margin: 0;
     }
     h1 {
       font-size: 1.8rem;
     }
     .welcome-message {
-      font-size: 1rem;
+      font-size: 1.0rem;
     }
     nav {
       gap: 8px;
@@ -342,11 +315,7 @@
       font-size: 0.9rem;
     }
     p {
-      font-size: 1rem;
-    }
-    /* Hide Q-Cube in footer on very small screens for simplicity */
-    footer .q-cube-svg {
-        display: none;
+      font-size: 1.0rem;
     }
   }
 </style>
@@ -354,26 +323,6 @@
 <body>
 
 <header>
-  <!-- NEW: Q-Cube Logo as SVG in the header - Final Geometry and Q Placement -->
-  <svg class="q-cube-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Isometric Cube Faces -->
-    <!-- Front face -->
-    <polygon points="10,60 60,60 60,10 10,10" fill="#FFFFF0" stroke="#000000" stroke-width="3"/>
-    <!-- Top face -->
-    <polygon points="10,10 35,0 85,0 60,10" fill="#F0F0F0" stroke="#000000" stroke-width="3"/>
-    <!-- Right face -->
-    <polygon points="60,10 85,0 85,50 60,60" fill="#E0E0E0" stroke="#000000" stroke-width="3"/>
-
-    <!-- Q on Front Face - Adjusted for better integration -->
-    <text x="35" y="45" font-family="Arial Black" font-size="40" fill="#000000" text-anchor="middle" dominant-baseline="middle">Q</text>
-
-    <!-- Q on Top Face - Adjusted for better integration and perspective -->
-    <text x="47.5" y="10" font-family="Arial Black" font-size="28" fill="#000000" text-anchor="middle" dominant-baseline="hanging" transform="skewX(-25) translate(0, -5)">Q</text>
-
-    <!-- Q on Right Face - Adjusted for better integration and perspective -->
-    <text x="65" y="32.5" font-family="Arial Black" font-size="28" fill="#000000" text-anchor="middle" dominant-baseline="middle" transform="skewY(25) translate(15, -5)">Q</text>
-  </svg>
-
   <!-- Quizzy Mascot as SVG in the header - EXACTLY LIKE YOUR IMAGE! -->
   <svg class="quizzy-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
     <!-- Main rectangle body -->
@@ -399,448 +348,142 @@
   Quizinac™
 </header>
 
- <h1>Welcome to Quizinac™!</h1>
-<p class="welcome-message">Fun personality quizzes about your vibe, style, and more!</p> 
+<h1>Welcome to Quizinac™!</h1>
+<p class="welcome-message">Fun personality quizzes about your vibe, style, and more!</p>
 
 <nav>
-  <!-- Navigation buttons to switch between quizzes -->
-  <button onclick="showQuiz('neatMessy')">Neat or Messy?</button>
-  <button onclick="showQuiz('braveFearful')">Brave or Fearful?</button>
-  <button onclick="showQuiz('colorYou')">What Color Are YOU?</button>
-  <button onclick="showQuiz('shapeYou')">Find Your Shape!</button>
-  <button onclick="showQuiz('emotionYou')">What's Your Vibe!</button>
-  <button onclick="showQuiz('weatherYou')">Weather Your Soul!</button>
-  <button onclick="showQuiz('houseYou')">Dream Home!</button>
+  <!-- Navigation buttons to switch between quizzes -->
+  <button onclick="showQuiz('neatMessy')">Neat or Messy?</button>
+  <button onclick="showQuiz('braveFearful')">Brave or Fearful?</button>
+  <button onclick="showQuiz('colorYou')">What Color Are YOU?</button>
+  <button onclick="showQuiz('shapeYou')">Find Your Shape!</button>
+  <button onclick="showQuiz('emotionYou')">What's Your Vibe!</button>
+  <button onclick="showQuiz('weatherYou')">Weather Your Soul!</button>
+  <button onclick="showQuiz('houseYou')">Dream Home!</button>
 </nav>
 
 <!-- Neat or Messy Quiz Section -->
 <section id="neatMessy" class="quiz">
-  <h2>Are You Neat or Messy?</h2>
-  <form id="quizNeatMessyForm">
-    <p>Fave color?</p>
-    <label><input type="radio" name="color" value="neat" /> Blue</label>
-    <label><input type="radio" name="color" value="messy" /> Red</label>
+  <h2>Are You Neat or Messy?</h2>
+  <form id="quizNeatMessyForm">
+    <p>Fave color?</p>
+    <label><input type="radio" name="color" value="neat" /> Blue</label>
+    <label><input type="radio" name="color" value="messy" /> Red</label>
 
-    <p>Are you an only child?</p>
-    <label><input type="radio" name="onlyChild" value="neat" /> Yes</label>
-    <label><input type="radio" name="onlyChild" value="messy" /> No</label>
+    <p>Are you an only child?</p>
+    <label><input type="radio" name="onlyChild" value="neat" /> Yes</label>
+    <label><input type="radio" name="onlyChild" value="messy" /> No</label>
 
-    <p>When do you sleep?</p>
-    <label><input type="radio" name="sleep" value="neat" /> Before 10</label>
-    <label><input type="radio" name="sleep" value="messy" /> After 10</label>
+    <p>When do you sleep?</p>
+    <label><input type="radio" name="sleep" value="neat" /> Before 10</label>
+    <label><input type="radio" name="sleep" value="messy" /> After 10</label>
 
-    <button type="button" class="result-btn" onclick="calculateNeatMessy()">See Result</button>
-  </form>
-  <p class="result" id="resultNeatMessy"></p>
+    <button type="button" class="result-btn" onclick="calculateNeatMessy()">See Result</button>
+  </form>
+  <p class="result" id="resultNeatMessy"></p>
 </section>
 
 <!-- Brave or Fearful Quiz Section -->
 <section id="braveFearful" class="quiz" style="display:none;">
-  <h2>Are You Brave or Fearful?</h2>
-  <form id="quizBraveFearfulForm">
-    <p>Desert or Jungle?</p>
-    <label><input type="radio" name="environment" value="brave" /> Desert</label>
-    <label><input type="radio" name="environment" value="fearful" /> Jungle</label>
+  <h2>Are You Brave or Fearful?</h2>
+  <form id="quizBraveFearfulForm">
+    <p>Desert or Jungle?</p>
+    <label><input type="radio" name="environment" value="brave" /> Desert</label>
+    <label><input type="radio" name="environment" value="fearful" /> Jungle</label>
 
-    <p>White or Blue?</p>
-    <label><input type="radio" name="color" value="brave" /> White</label>
-    <label><input type="radio" name="color" value="fearful" /> Blue</label>
+    <p>White or Blue?</p>
+    <label><input type="radio" name="color" value="brave" /> White</label>
+    <label><input type="radio" name="color" value="fearful" /> Blue</label>
 
-    <p>Happy or Excited?</p>
-    <label><input type="radio" name="mood" value="brave" /> Happy</label>
-    <label><input type="radio" name="mood" value="fearful" /> Excited</label>
+    <p>Happy or Excited?</p>
+    <label><input type="radio" name="mood" value="brave" /> Happy</label>
+    <label><input type="radio" name="mood" value="fearful" /> Excited</label>
 
-    <button type="button" class="result-btn" onclick="calculateBraveFearful()">See Result</button>
-  </form>
-  <p class="result" id="resultBraveFearful"></p>
+    <button type="button" class="result-btn" onclick="calculateBraveFearful()">See Result</button>
+  </form>
+  <p class="result" id="resultBraveFearful"></p>
 </section>
 
 <!-- What Color Are You Quiz Section -->
 <section id="colorYou" class="quiz" style="display:none;">
-  <h2>What Color Are You?</h2>
-  <form id="quizColorForm">
-    <p>What's your favorite weather?</p>
-    <label><input type="radio" name="weather" value="1" /> Rain</label>
-    <label><input type="radio" name="weather" value="2" /> Clouds</label>
-    <label><input type="radio" name="weather" value="3" /> Sunny</label>
-    <label><input type="radio" name="weather" value="4" /> Snow</label>
-    <label><input type="radio" name="weather" value="5" /> Thunderstorm</label>
+  <h2>What Color Are You?</h2>
+  <form id="quizColorForm">
+    <p>What's your favorite weather?</p>
+    <label><input type="radio" name="weather" value="1" /> Rain</label>
+    <label><input type="radio" name="weather" value="2" /> Clouds</label>
+    <label><input type="radio" name="weather" value="3" /> Sunny</label>
+    <label><input type="radio" name="weather" value="4" /> Snow</label>
+    <label><input type="radio" name="weather" value="5" /> Thunderstorm</label>
 
-    <p>What's your favorite shape?</p>
-    <label><input type="radio" name="shape" value="1" /> Circle</label>
-    <label><input type="radio" name="shape" value="2" /> Triangle</label>
-    <label><input type="radio" name="shape" value="3" /> Square</label>
-    <label><input type="radio" name="shape" value="4" /> Hexagon</label>
-    <label><input type="radio" name="shape" value="5" /> Rectangle</label>
+    <p>What's your favorite shape?</p>
+    <label><input type="radio" name="shape" value="1" /> Circle</label>
+    <label><input type="radio" name="shape" value="2" /> Triangle</label>
+    <label><input type="radio" name="shape" value="3" /> Square</label>
+    <label><input type="radio" name="shape" value="4" /> Hexagon</label>
+    <label><input type="radio" name="shape" value="5" /> Rectangle</label>
 
-    <p>What's your favorite utensil?</p>
-    <label><input type="radio" name="utensil" value="1" /> Knife</label>
-    <label><input type="radio" name="utensil" value="2" /> Spoon</label>
-    <label><input type="radio" name="utensil" value="3" /> Spork</label>
-    <label><input type="radio" name="utensil" value="4" /> Fork</label>
-    <label><input type="radio" name="utensil" value="5" /> Chopsticks</label>
+    <p>What's your favorite utensil?</p>
+    <label><input type="radio" name="utensil" value="1" /> Knife</label>
+    <label><input type="radio" name="utensil" value="2" /> Spoon</label>
+    <label><input type="radio" name="utensil" value="3" /> Spork</label>
+    <label><input type="radio" name="utensil" value="4" /> Fork</label>
+    <label><input type="radio" name="utensil" value="5" /> Chopsticks</label>
 
-    <button type="button" class="result-btn" onclick="calculateColor()">See Result</button>
-  </form>
-  <p class="result" id="resultColor"></p>
+    <button type="button" class="result-btn" onclick="calculateColor()">See Result</button>
+  </form>
+  <p class="result" id="resultColor"></p>
 </section>
 
 <!-- What Shape Are You Quiz Section -->
 <section id="shapeYou" class="quiz" style="display:none;">
-  <h2>What Shape Are You?</h2>
-  <form id="quizShapeForm">
-    <p>Favorite color?</p>
-    <label><input type="radio" name="color" value="1" /> Red</label>
-    <label><input type="radio" name="color" value="2" /> Green</label>
-    <label><input type="radio" name="color" value="3" /> Orange</label>
-    <label><input type="radio" name="color" value="4" /> Blue</label>
-    <label><input type="radio" name="color" value="5" /> Yellow</label>
+  <h2>What Shape Are You?</h2>
+  <form id="quizShapeForm">
+    <p>Favorite color?</p>
+    <label><input type="radio" name="color" value="1" /> Red</label>
+    <label><input type="radio" name="color" value="2" /> Green</label>
+    <label><input type="radio" name="color" value="3" /> Orange</label>
+    <label><input type="radio" name="color" value="4" /> Blue</label>
+    <label><input type="radio" name="color" value="5" /> Yellow</label>
 
-    <p>Favorite weather?</p>
-    <label><input type="radio" name="weather" value="1" /> Rain</label>
-    <label><input type="radio" name="weather" value="2" /> Sunny</label>
-    <label><input type="radio" name="weather" value="3" /> Thunder</label>
-    <label><input type="radio" name="weather" value="4" /> Snowy</label>
-    <label><input type="radio" name="weather" value="5" /> Cloudy</label>
+    <p>Favorite weather?</p>
+    <label><input type="radio" name="weather" value="1" /> Rain</label>
+    <label><input type="radio" name="weather" value="2" /> Sunny</label>
+    <label><input type="radio" name="weather" value="3" /> Thunder</label>
+    <label><input type="radio" name="weather" value="4" /> Snowy</label>
+    <label><input type="radio" name="weather" value="5" /> Cloudy</label>
 
-    <p>Favorite utensil?</p>
-    <label><input type="radio" name="utensil" value="1" /> Spoon</label>
-    <label><input type="radio" name="utensil" value="2" /> Spork</label>
-    <label><input type="radio" name="utensil" value="3" /> Fork</label>
-    <label><input type="radio" name="utensil" value="4" /> Chopsticks</label>
-    <label><input type="radio" name="utensil" value="5" /> Knife</label>
+    <p>Favorite utensil?</p>
+    <label><input type="radio" name="utensil" value="1" /> Spoon</label>
+    <label><input type="radio" name="utensil" value="2" /> Spork</label>
+    <label><input type="radio" name="utensil" value="3" /> Fork</label>
+    <label><input type="radio" name="utensil" value="4" /> Chopsticks</label>
+    <label><input type="radio" name="utensil" value="5" /> Knife</label>
 
-    <button type="button" class="result-btn" onclick="calculateShape()">See Result</button>
-  </form>
-  <p class="result" id="resultShape"></p>
+    <button type="button" class="result-btn" onclick="calculateShape()">See Result</button>
+  </form>
+  <p class="result" id="resultShape"></p>
 </section>
 
 <!-- What Emotion Are You Quiz Section -->
 <section id="emotionYou" class="quiz" style="display:none;">
-  <h2>What Emotion Are You?</h2>
-  <form id="quizEmotionForm">
-    <p>Favorite color?</p>
-    <label><input type="radio" name="color" value="1" /> Yellow</label>
-    <label><input type="radio" name="color" value="2" /> Blue</label>
-    <label><input type="radio" name="color" value="3" /> Orange</label>
-    <label><input type="radio" name="color" value="4" /> Purple</label>
-    <label><input type="radio" name="color" value="5" /> Red</label>
+  <h2>What Emotion Are You?</h2>
+  <form id="quizEmotionForm">
+    <p>Favorite color?</p>
+    <label><input type="radio" name="color" value="1" /> Yellow</label>
+    <label><input type="radio" name="color" value="2" /> Blue</label>
+    <label><input type="radio" name="color" value="3" /> Orange</label>
+    <label><input type="radio" name="color" value="4" /> Purple</label>
+    <label><input type="radio" name="color" value="5" /> Red</label>
 
-    <p>Favorite shape?</p>
-    <label><input type="radio" name="shape" value="1" /> Square</label>
-    <label><input type="radio" name="shape" value="2" /> Circle</label>
-    <label><input type="radio" name="shape" value="3" /> Star</label>
-    <label><input type="radio" name="shape" value="4" /> Parallelogram</label>
-    <label><input type="radio" name="shape" value="5" /> Triangle</label>
+    <p>Favorite shape?</p>
+    <label><input type="radio" name="shape" value="1" /> Square</label>
+    <label><input type="radio" name="shape" value="2" /> Circle</label>
+    <label><input type="radio" name="shape" value="3" /> Star</label>
+    <label><input type="radio" name="shape" value="4" /> Parallelogram</label>
+    <label><input type="radio" name="shape" value="5" /> Triangle</label>
 
-    <p>Favorite weather?</p>
-    <label><input type="radio" name="weather" value="1" /> Rainy</label>
-    <label><input type="radio" name="weather" value="2" /> Cloudy</label>
-    <label><input type="radio" name="weather" value="3" /> Thunder</label>
-    <label><input type="radio" name="weather" value="4" /> Sunny</label>
-    <label><input type="radio" name="weather" value="5" /> Snow</label>
-
-    <button type="button" class="result-btn" onclick="calculateEmotion()">See Result</button>
-  </form>
-  <p class="result" id="resultEmotion"></p>
-</section>
-
-<!-- What Weather Are You Quiz Section -->
-<section id="weatherYou" class="quiz" style="display:none;">
-  <h2>What Weather Are You?</h2>
-  <form id="quizWeatherForm">
-    <p>Favorite color?</p>
-    <label><input type="radio" name="color" value="1" /> Green</label>
-    <label><input type="radio" name="color" value="2" /> Red</label>
-    <label><input type="radio" name="color" value="3" /> Blue</label>
-    <label><input type="radio" name="color" value="4" /> Orange</label>
-    <label><input type="radio" name="color" value="5" /> Purple</label>
-
-    <p>Favorite shape?</p>
-    <label><input type="radio" name="shape" value="1" /> Square</label>
-    <label><input type="radio" name="shape" value="2" /> Circle</label>
-    <label><input type="radio" name="shape" value="3" /> Diamond</label>
-    <label><input type="radio" name="shape" value="4" /> Star</label>
-    <label><input type="radio" name="shape" value="5" /> Triangle</label>
-
-    <p>Favorite music?</p>
-    <label><input type="radio" name="music" value="1" /> Hip-hop</label>
-    <label><input type="radio" name="music" value="2" /> Jazz</label>
-    <label><input type="radio" name="music" value="3" /> Pop</label>
-    <label><input type="radio" name="music" value="4" /> Rock</label>
-    <label><input type="radio" name="music" value="5" /> Classical</label>
-
-    <button type="button" class="result-btn" onclick="calculateWeather()">See Result</button>
-  </form>
-  <p class="result" id="resultWeather"></p>
-</section>
-
-<!-- What House Suits You Quiz Section -->
-<section id="houseYou" class="quiz" style="display:none;">
-  <h2>What House Suits You?</h2>
-  <form id="quizHouseForm">
-    <p>Favorite color?</p>
-    <label><input type="radio" name="color" value="1" /> Yellow</label>
-    <label><input type="radio" name="color" value="2" /> Blue</label>
-    <label><input type="radio" name="color" value="3" /> Green</label>
-    <label><input type="radio" name="color" value="4" /> Red</label>
-    <label><input type="radio" name="color" value="5" /> Orange</label>
-
-    <p>Favorite music?</p>
-    <label><input type="radio" name="music" value="1" /> Jazz</label>
-    <label><input type="radio" name="music" value="2" /> Pop</label>
-    <label><input type="radio" name="music" value="3" /> Rock</label>
-    <label><input type="radio" name="music" value="4" /> Classical</label>
-    <label><input type="radio" name="music" value="5" /> Hip-hop</label>
-
-    <p>Favorite animal?</p>
-    <label><input type="radio" name="animal" value="1" /> Fish</label>
-    <label><input type="radio" name="animal" value="2" /> Reptiles</label>
-    <label><input type="radio" name="animal" value="3" /> Mammal</label>
-    <label><input type="radio" name="animal" value="4" /> Bird</label>
-    <label><input type="radio" name="animal" value="5" /> Amphibians</label>
-
-    <button type="button" class="result-btn" onclick="calculateHouse()">See Result</button>
-  </form>
-  <p class="result" id="resultHouse"></p>
-</section>
-
-<footer>
-  Made with ♥ by Quizinac™ &nbsp;
-  <!-- NEW: Q-Cube Logo in the footer - Final Geometry and Q Placement -->
-  <svg class="q-cube-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Isometric Cube Faces -->
-    <!-- Front face -->
-    <polygon points="10,60 60,60 60,10 10,10" fill="#FFFFF0" stroke="#000000" stroke-width="3"/>
-    <!-- Top face -->
-    <polygon points="10,10 35,0 85,0 60,10" fill="#F0F0F0" stroke="#000000" stroke-width="3"/>
-    <!-- Right face -->
-    <polygon points="60,10 85,0 85,50 60,60" fill="#E0E0E0" stroke="#000000" stroke-width="3"/>
-
-    <!-- Q on Front Face - Adjusted for better integration -->
-    <text x="35" y="45" font-family="Arial Black" font-size="40" fill="#000000" text-anchor="middle" dominant-baseline="middle">Q</text>
-
-    <!-- Q on Top Face - Adjusted for better integration and perspective -->
-    <text x="47.5" y="10" font-family="Arial Black" font-size="28" fill="#000000" text-anchor="middle" dominant-baseline="hanging" transform="skewX(-25) translate(0, -5)">Q</text>
-
-    <!-- Q on Right Face - Adjusted for better integration and perspective -->
-    <text x="65" y="32.5" font-family="Arial Black" font-size="28" fill="#000000" text-anchor="middle" dominant-baseline="middle" transform="skewY(25) translate(15, -5)">Q</text>
-  </svg>
-  <!-- Quizzy Mascot as SVG in the footer - EXACTLY LIKE YOUR IMAGE! -->
-  <svg class="quizzy-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="10" y="5" width="80" height="90" rx="0" fill="#FFFFF0" stroke="#000000" stroke-width="4"/>
-    <text x="25" y="25" font-family="Comic Neue" font-size="15" font-weight="bold" fill="#000000">QUIZZY</text>
-    <line x1="38" y1="45" x2="38" y2="48" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-    <line x1="62" y1="45" x2="62" y2="48" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-    <path d="M35 55 Q50 65, 65 55" stroke="#000000" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <path d="M25 70 C35 75, 65 75, 75 70" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <path d="M20 78 C30 83, 70 83, 80 78" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <path d="M25 86 C35 91, 65 91, 75 86" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <line x1="10" y1="45" x2="0" y2="35" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
-    <line x1="90" y1="45" x2="100" y2="35" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
-    <line x1="30" y1="95" x2="20" y2="100" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
-    <line x1="70" y1="95" x2="80" y2="100" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
-  </svg>
-</footer>
-
-<script>
-  // Function to show the selected quiz and hide others
-  function showQuiz(id) {
-    document.querySelectorAll('section.quiz').forEach(s => s.style.display = 'none');
-    document.getElementById(id).style.display = 'block';
-  }
-
-  // Quiz Calculation Functions (JavaScript remains the same as before, ensuring accuracy)
-
-  // Calculate result for Neat or Messy quiz
-  function calculateNeatMessy() {
-    const form = document.getElementById('quizNeatMessyForm');
-    const color = form.color.value;
-    const onlyChild = form.onlyChild.value;
-    const sleep = form.sleep.value;
-
-    if (!color || !onlyChild || !sleep) {
-      alert('Please answer all questions!');
-      return;
-    }
-
-    let neatCount = 0;
-    let messyCount = 0;
-    if (color === 'neat') neatCount++; else if (color === 'messy') messyCount++;
-    if (onlyChild === 'neat') neatCount++; else if (onlyChild === 'messy') messyCount++;
-    if (sleep === 'neat') neatCount++; else if (sleep === 'messy') messyCount++;
-
-    let message = '';
-    if (neatCount > messyCount) {
-      message = 'You are Neat! ✨';
-    } else if (messyCount > neatCount) {
-      message = 'You are Messy! 🎉';
-    } else {
-      message = 'You are a mix of Neat and Messy! ⚖️';
-    }
-    document.getElementById('resultNeatMessy').textContent = message;
-  }
-
-  // Calculate result for Brave or Fearful quiz
-  function calculateBraveFearful() {
-    const form = document.getElementById('quizBraveFearfulForm');
-    const env = form.environment.value;
-    const color = form.color.value;
-    const mood = form.mood.value;
-
-    if (!env || !color || !mood) {
-      alert('Please answer all questions!');
-      return;
-    }
-
-    let braveCount = 0;
-    let fearfulCount = 0;
-    if (env === 'brave') braveCount++; else if (env === 'fearful') fearfulCount++;
-    if (color === 'brave') braveCount++; else if (color === 'fearful') fearfulCount++;
-    if (mood === 'brave') braveCount++; else if (mood === 'fearful') fearfulCount++;
-
-    let message = '';
-    if (braveCount > fearfulCount) {
-      message = 'You are Brave! 🦁';
-    } else if (fearfulCount > braveCount) {
-      message = 'You are Fearful! 🛡️';
-    } else {
-      message = 'You are both Brave and Fearful! 🤔';
-    }
-    document.getElementById('resultBraveFearful').textContent = message;
-  }
-
-  // Calculate result for What Color Are You quiz
-  function calculateColor() {
-    const form = document.getElementById('quizColorForm');
-    const weather = parseInt(form.weather.value);
-    const shape = parseInt(form.shape.value);
-    const utensil = parseInt(form.utensil.value);
-
-    if (isNaN(weather) || isNaN(shape) || isNaN(utensil)) {
-      alert('Please answer all questions!');
-      return;
-    }
-
-    let total = weather + shape + utensil;
-
-    let colorResult = '';
-    if (total >= 3 && total <= 5) colorResult = 'RED';
-    else if (total >= 6 && total <= 8) colorResult = 'ORANGE';
-    else if (total >= 9 && total <= 11) colorResult = 'GREEN';
-    else if (total >= 12 && total <= 14) colorResult = 'BLUE';
-    else if (total >= 15) colorResult = 'PURPLE';
-
-    document.getElementById('resultColor').textContent = 'You are ' + colorResult + '! 🌈';
-  }
-
-  // Calculate result for What Shape Are You quiz
-  function calculateShape() {
-    const form = document.getElementById('quizShapeForm');
-    const color = parseInt(form.color.value);
-    const weather = parseInt(form.weather.value);
-    const utensil = parseInt(form.utensil.value);
-
-    if (isNaN(color) || isNaN(weather) || isNaN(utensil)) {
-      alert('Please answer all questions!');
-      return;
-    }
-
-    let total = color + weather + utensil;
-
-    let shapeResult = '';
-    if (total >= 3 && total <= 5) shapeResult = 'Circle';
-    else if (total >= 6 && total <= 8) shapeResult = 'Square';
-    else if (total >= 9 && total <= 11) shapeResult = 'Triangle';
-    else if (total >= 12 && total <= 14) shapeResult = 'Diamond';
-    else if (total >= 15) shapeResult = 'Star';
-
-    document.getElementById('resultShape').textContent = 'You are a ' + shapeResult + '! ✨';
-  }
-
-  // Calculate result for What Emotion Are You quiz
-  function calculateEmotion() {
-    const form = document.getElementById('quizEmotionForm');
-    const color = parseInt(form.color.value);
-    const shape = parseInt(form.shape.value);
-    const weather = parseInt(form.weather.value);
-
-    if (isNaN(color) || isNaN(shape) || isNaN(weather)) {
-      alert('Please answer all questions!');
-      return;
-    }
-
-    let total = color + shape + weather;
-
-    let resultEmotion = '';
-    if (total >= 3 && total <= 5) resultEmotion = 'Happy';
-    else if (total >= 6 && total <= 8) resultEmotion = 'Sad';
-    else if (total >= 9 && total <= 11) resultEmotion = 'Anxious';
-    else if (total >= 12 && total <= 14) resultEmotion = 'Excited';
-    else if (total >= 15) resultEmotion = 'Angry';
-
-    document.getElementById('resultEmotion').textContent = 'You feel ' + resultEmotion + '! 😊';
-  }
-
-  // Calculate result for What Weather Are You quiz
-  function calculateWeather() {
-    const form = document.getElementById('quizWeatherForm');
-    const color = parseInt(form.color.value);
-    const shape = parseInt(form.shape.value);
-    const music = parseInt(form.music.value);
-
-    if (isNaN(color) || isNaN(shape) || isNaN(music)) {
-      alert('Please answer all questions!');
-      return;
-    }
-
-    let total = color + shape + music;
-
-    let resultWeather = '';
-    if (total >= 3 && total <= 5) resultWeather = 'Sunny';
-    else if (total >= 6 && total <= 8) resultWeather = 'Rainy';
-    else if (total >= 9 && total <= 11) resultWeather = 'Snowy';
-    else if (total >= 12 && total <= 14) resultWeather = 'Cloudy';
-    else if (total >= 15) resultWeather = 'Thunder';
-
-    document.getElementById('resultWeather').textContent = 'You are ' + resultWeather + ' weather! 🌦️';
-  }
-
-  // Calculate result for What House Suits You quiz
-  function calculateHouse() {
-    const form = document.getElementById('quizHouseForm');
-    const color = parseInt(form.color.value);
-    const music = parseInt(form.music.value);
-    const animal = parseInt(form.animal.value);
-
-    if (isNaN(color) || isNaN(music) || isNaN(animal)) {
-      alert('Please answer all questions!');
-      return;
-    }
-
-    let total = color + music + animal;
-
-    let bestHouse = '';
-    const houseNames = {
-      'beachhouse': 'a Beach House',
-      'mansion': 'a Mansion',
-      'treehouse': 'a Treehouse',
-      'apartment': 'an Apartment',
-      'hut': 'a Hut'
-    };
-
-    if (total >= 3 && total <= 5) bestHouse = 'beachhouse';
-    else if (total >= 6 && total <= 8) bestHouse = 'mansion';
-    else if (total >= 9 && total <= 11) bestHouse = 'treehouse';
-    else if (total >= 12 && total <= 14) bestHouse = 'apartment';
-    else if (total >= 15) bestHouse = 'hut';
-
-    document.getElementById('resultHouse').textContent = 'You belong in ' + houseNames[bestHouse] + '! 🏠';
-  }
-
-  // Initially show the first quiz when the page loads
-  showQuiz('neatMessy');
-</script>
-
-</body>
-</html>
+    <p>Favorite weather?</p>
+    <label><input type="radio" name="weather" value="1" /> Rainy</label>
+    <label><input type="radio" name="weather" value="2" /> Cloudy</label>
+    <label><input type="radio" name="weather" value="3" /> Thunder</label>
+    <label><input type="radio" name="weather" value="4" /> Sunny
