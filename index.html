@@ -486,4 +486,330 @@
     <label><input type="radio" name="weather" value="1" /> Rainy</label>
     <label><input type="radio" name="weather" value="2" /> Cloudy</label>
     <label><input type="radio" name="weather" value="3" /> Thunder</label>
-    <label><input type="radio" name="weather" value="4" /> Sunny
+    <label><input type="radio" name="weather" value="4" /> Sunny</label>
+    <label><input type="radio" name="weather" value="5" /> Snow</label>
+
+    <button type="button" class="result-btn" onclick="calculateEmotion()">See Result</button>
+  </form>
+  <p class="result" id="resultEmotion"></p>
+</section>
+
+<!-- What Weather Are You Quiz Section -->
+<section id="weatherYou" class="quiz" style="display:none;">
+  <h2>What Weather Are You?</h2>
+  <form id="quizWeatherForm">
+    <p>Favorite color?</p>
+    <label><input type="radio" name="color" value="1" /> Green</label>
+    <label><input type="radio" name="color" value="2" /> Red</label>
+    <label><input type="radio" name="color" value="3" /> Blue</label>
+    <label><input type="radio" name="color" value="4" /> Orange</label>
+    <label><input type="radio" name="color" value="5" /> Purple</label>
+
+    <p>Favorite shape?</p>
+    <label><input type="radio" name="shape" value="1" /> Square</label>
+    <label><input type="radio" name="shape" value="2" /> Circle</label>
+    <label><input type="radio" name="shape" value="3" /> Diamond</label>
+    <label><input type="radio" name="shape" value="4" /> Star</label>
+    <label><input type="radio" name="shape" value="5" /> Triangle</label>
+
+    <p>Favorite music?</p>
+    <label><input type="radio" name="music" value="1" /> Hip-hop</label>
+    <label><input type="radio" name="music" value="2" /> Jazz</label>
+    <label><input type="radio" name="music" value="3" /> Pop</label>
+    <label><input type="radio" name="music" value="4" /> Rock</label>
+    <label><input type="radio" name="music" value="5" /> Classical</label>
+
+    <button type="button" class="result-btn" onclick="calculateWeather()">See Result</button>
+  </form>
+  <p class="result" id="resultWeather"></p>
+</section>
+
+<!-- What House Suits You Quiz Section -->
+<section id="houseYou" class="quiz" style="display:none;">
+  <h2>What House Suits You?</h2>
+  <form id="quizHouseForm">
+    <p>Favorite color?</p>
+    <label><input type="radio" name="color" value="1" /> Yellow</label>
+    <label><input type="radio" name="color" value="2" /> Blue</label>
+    <label><input type="radio" name="color" value="3" /> Green</label>
+    <label><input type="radio" name="color" value="4" /> Red</label>
+    <label><input type="radio" name="color" value="5" /> Orange</label>
+
+    <p>Favorite music?</p>
+    <label><input type="radio" name="music" value="1" /> Jazz</label>
+    <label><input type="radio" name="music" value="2" /> Pop</label>
+    <label><input type="radio" name="music" value="3" /> Rock</label>
+    <label><input type="radio" name="music" value="4" /> Classical</label>
+    <label><input type="radio" name="music" value="5" /> Hip-hop</label>
+
+    <p>Favorite animal?</p>
+    <label><input type="radio" name="animal" value="1" /> Fish</label>
+    <label><input type="radio" name="animal" value="2" /> Reptiles</label>
+    <label><input type="radio" name="animal" value="3" /> Mammal</label>
+    <label><input type="radio" name="animal" value="4" /> Bird</label>
+    <label><input type="radio" name="animal" value="5" /> Amphibians</label>
+
+    <button type="button" class="result-btn" onclick="calculateHouse()">See Result</button>
+  </form>
+  <p class="result" id="resultHouse"></p>
+</section>
+
+<footer>
+  Made with ♥ by Quizinac™ &nbsp;
+  <!-- Quizzy Mascot as SVG in the footer - EXACTLY LIKE YOUR IMAGE! -->
+  <svg class="quizzy-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="10" y="5" width="80" height="90" rx="0" fill="#FFFFF0" stroke="#000000" stroke-width="4"/>
+    <text x="25" y="25" font-family="Comic Neue" font-size="15" font-weight="bold" fill="#000000">QUIZZY</text>
+    <line x1="38" y1="45" x2="38" y2="48" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+    <line x1="62" y1="45" x2="62" y2="48" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+    <path d="M35 55 Q50 65, 65 55" stroke="#000000" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M25 70 C35 75, 65 75, 75 70" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M20 78 C30 83, 70 83, 80 78" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M25 86 C35 91, 65 91, 75 86" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <line x1="10" y1="45" x2="0" y2="35" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    <line x1="90" y1="45" x2="100" y2="35" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    <line x1="30" y1="95" x2="20" y2="100" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    <line x1="70" y1="95" x2="80" y2="100" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+  </svg>
+</footer>
+
+<script>
+  // Function to show the selected quiz and hide others
+  function showQuiz(id) {
+    document.querySelectorAll('section.quiz').forEach(s => s.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+  }
+
+  // Define customMessageBox and hideMessageBox functions globally if they aren't already
+  // These are usually defined in a larger script or imported. For this context, assuming they exist or defining minimally.
+  const customMessageBox = document.getElementById('customMessageBox') || document.createElement('div');
+  customMessageBox.id = 'customMessageBox';
+  customMessageBox.className = 'custom-message-box';
+  if (!document.body.contains(customMessageBox)) {
+      document.body.appendChild(customMessageBox);
+  }
+
+  const customMessageText = document.getElementById('customMessageText') || document.createElement('p');
+  customMessageText.id = 'customMessageText';
+  if (!customMessageBox.contains(customMessageText)) {
+      const contentDiv = document.createElement('div');
+      contentDiv.className = 'custom-message-content';
+      contentDiv.appendChild(customMessageText);
+      customMessageBox.appendChild(contentDiv);
+  }
+
+  const customMessageBoxButtonsContainer = customMessageBox.querySelector('.message-box-buttons') || document.createElement('div');
+  customMessageBoxButtonsContainer.className = 'message-box-buttons';
+  if (!customMessageBox.querySelector('.custom-message-content').contains(customMessageBoxButtonsContainer)) {
+      customMessageBox.querySelector('.custom-message-content').appendChild(customMessageBoxButtonsContainer);
+  }
+
+  function showMessageBox(message, buttonsConfig) {
+    customMessageText.textContent = message;
+    customMessageBoxButtonsContainer.innerHTML = ''; // Clear existing buttons
+
+    buttonsConfig.forEach(buttonConf => {
+        const button = document.createElement('button');
+        button.textContent = buttonConf.text;
+        button.onclick = buttonConf.onClick;
+        customMessageBoxButtonsContainer.appendChild(button);
+    });
+
+    customMessageBox.style.display = 'flex';
+  }
+
+  function hideMessageBox() {
+    customMessageBox.style.display = 'none';
+  }
+
+
+  // Quiz Calculation Functions (JavaScript for individual quizzes)
+
+  function calculateNeatMessy() {
+    const form = document.getElementById('quizNeatMessyForm');
+    const color = form.color.value;
+    const onlyChild = form.onlyChild.value;
+    const sleep = form.sleep.value;
+
+    if (!color || !onlyChild || !sleep) {
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
+      return;
+    }
+
+    let neatCount = 0;
+    let messyCount = 0;
+    if (color === 'neat') neatCount++; else if (color === 'messy') messyCount++;
+    if (onlyChild === 'neat') neatCount++; else if (onlyChild === 'messy') messyCount++;
+    if (sleep === 'neat') neatCount++; else if (sleep === 'messy') messyCount++;
+
+    let message = '';
+    if (neatCount > messyCount) {
+      message = 'You are Neat! ✨';
+    } else if (messyCount > neatCount) {
+      message = 'You are Messy! �';
+    } else {
+      message = 'You are a mix of Neat and Messy! ⚖️';
+    }
+    document.getElementById('resultNeatMessy').textContent = message;
+  }
+
+  function calculateBraveFearful() {
+    const form = document.getElementById('quizBraveFearfulForm');
+    const env = form.environment.value;
+    const color = form.color.value;
+    const mood = form.mood.value;
+
+    if (!env || !color || !mood) {
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
+      return;
+    }
+
+    let braveCount = 0;
+    let fearfulCount = 0;
+    if (env === 'brave') braveCount++; else if (env === 'fearful') fearfulCount++;
+    if (color === 'brave') braveCount++; else if (color === 'fearful') fearfulCount++;
+    if (mood === 'brave') braveCount++; else if (mood === 'fearful') fearfulCount++;
+
+    let message = '';
+    if (braveCount > fearfulCount) {
+      message = 'You are Brave! 🦁';
+    } else if (fearfulCount > braveCount) {
+      message = 'You are Fearful! 🛡️';
+    } else {
+      message = 'You are both Brave and Fearful! 🤔';
+    }
+    document.getElementById('resultBraveFearful').textContent = message;
+  }
+
+  function calculateColor() {
+    const form = document.getElementById('quizColorForm');
+    const weather = parseInt(form.weather.value);
+    const shape = parseInt(form.shape.value);
+    const utensil = parseInt(form.utensil.value);
+
+    if (isNaN(weather) || isNaN(shape) || isNaN(utensil)) {
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
+      return;
+    }
+
+    let total = weather + shape + utensil;
+
+    let colorResult = '';
+    if (total >= 3 && total <= 5) colorResult = 'RED';
+    else if (total >= 6 && total <= 8) colorResult = 'ORANGE';
+    else if (total >= 9 && total <= 11) colorResult = 'GREEN';
+    else if (total >= 12 && total <= 14) colorResult = 'BLUE';
+    else if (total >= 15) colorResult = 'PURPLE';
+
+    document.getElementById('resultColor').textContent = 'You are ' + colorResult + '! 🌈';
+  }
+
+  function calculateShape() {
+    const form = document.getElementById('quizShapeForm');
+    const color = parseInt(form.color.value);
+    const weather = parseInt(form.weather.value);
+    const utensil = parseInt(form.utensil.value);
+
+    if (isNaN(color) || isNaN(weather) || isNaN(utensil)) {
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
+      return;
+    }
+
+    let total = color + weather + utensil;
+
+    let shapeResult = '';
+    if (total >= 3 && total <= 5) shapeResult = 'Circle';
+    else if (total >= 6 && total <= 8) shapeResult = 'Square';
+    else if (total >= 9 && total <= 11) shapeResult = 'Triangle';
+    else if (total >= 12 && total <= 14) shapeResult = 'Diamond';
+    else if (total >= 15) shapeResult = 'Star';
+
+    document.getElementById('resultShape').textContent = 'You are a ' + shapeResult + '! ✨';
+  }
+
+  function calculateEmotion() {
+    const form = document.getElementById('quizEmotionForm');
+    const color = parseInt(form.color.value);
+    const shape = parseInt(form.shape.value);
+    const weather = parseInt(form.weather.value);
+
+    if (isNaN(color) || isNaN(shape) || isNaN(weather)) {
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
+      return;
+    }
+
+    let total = color + shape + weather;
+
+    let resultEmotion = '';
+    if (total >= 3 && total <= 5) resultEmotion = 'Happy';
+    else if (total >= 6 && total <= 8) resultEmotion = 'Sad';
+    else if (total >= 9 && total <= 11) resultEmotion = 'Anxious';
+    else if (total >= 12 && total <= 14) resultEmotion = 'Excited';
+    else if (total >= 15) resultEmotion = 'Angry';
+
+    document.getElementById('resultEmotion').textContent = 'You feel ' + resultEmotion + '! 😊';
+  }
+
+  function calculateWeather() {
+    const form = document.getElementById('quizWeatherForm');
+    const color = parseInt(form.color.value);
+    const shape = parseInt(form.shape.value);
+    const music = parseInt(form.music.value);
+
+    if (isNaN(color) || isNaN(shape) || isNaN(music)) {
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
+      return;
+    }
+
+    let total = color + shape + music;
+
+    let resultWeather = '';
+    if (total >= 3 && total <= 5) resultWeather = 'Sunny';
+    else if (total >= 6 && total <= 8) resultWeather = 'Rainy';
+    else if (total >= 9 && total <= 11) resultWeather = 'Snowy';
+    else if (total >= 12 && total <= 14) resultWeather = 'Cloudy';
+    else if (total >= 15) resultWeather = 'Thunder';
+
+    document.getElementById('resultWeather').textContent = 'You are ' + resultWeather + ' weather! 🌦️';
+  }
+
+  function calculateHouse() {
+    const form = document.getElementById('quizHouseForm');
+    const color = parseInt(form.color.value);
+    const music = parseInt(form.music.value);
+    const animal = parseInt(form.animal.value);
+
+    if (isNaN(color) || isNaN(music) || isNaN(animal)) {
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
+      return;
+    }
+
+    let total = color + music + animal;
+
+    let bestHouse = '';
+    const houseNames = {
+      'beachhouse': 'a Beach House',
+      'mansion': 'a Mansion',
+      'treehouse': 'a Treehouse',
+      'apartment': 'an Apartment',
+      'hut': 'a Hut'
+    };
+
+    if (total >= 3 && total <= 5) bestHouse = 'beachhouse';
+    else if (total >= 6 && total <= 8) bestHouse = 'mansion';
+    else if (total >= 9 && total <= 11) bestHouse = 'treehouse';
+    else if (total >= 12 && total <= 14) bestHouse = 'apartment';
+    else if (total >= 15) bestHouse = 'hut';
+
+    document.getElementById('resultHouse').textContent = 'You belong in ' + houseNames[bestHouse] + '! 🏠';
+  }
+
+  // Initially show the first quiz when the page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    showQuiz('neatMessy');
+  });
+</script>
+
+</body>
+</html>
+�
