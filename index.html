@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>Quizinac.com</title>
+<meta name="google-site-verification" content="1VaYDmAfiEyS9tn2KpiIFLUENGSg0_cv02YSLb7Z09Y" />
+<meta name="description" content="Take fun quizzes like 'Neat or Messy?', 'What Color Are You?', and more with Quizinac!" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Quizinac™</title>
+
+<!-- Favicon (Updated to your multicolored 'Q' image file) -->
+<link rel="icon" type="image/png" href="q_favicon.png">
 
 <!-- Google Fonts for a vibrant, fun feel -->
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Luckiest+Guy&display=swap" rel="stylesheet" />
@@ -42,22 +47,40 @@
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Pronounced shadow */
     text-shadow: 3px 3px 5px rgba(0,0,0,0.3); /* Text shadow for pop */
+    display: flex; /* Use flexbox to align mascot and text */
+    align-items: center; /* Vertically center items */
+    justify-content: center; /* Horizontally center content */
+    gap: 15px; /* Space between mascot and text */
   }
 
   /* Quizzy Mascot (SVG embedded) Styling in Header */
   header .quizzy-svg {
     height: 70px;
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
     animation: wave 1.2s infinite ease-in-out; /* Lively wave animation */
   }
 
   /* Keyframe animation for Quizzy's subtle wave */
   @keyframes wave {
-    0%, 100% { transform: translateY(-50%) rotate(0deg);}
-    50% { transform: translateY(-60%) rotate(8deg);} /* More pronounced tilt */
+    0%, 100% { transform: rotate(0deg);}
+    50% { transform: rotate(8deg);} /* More pronounced tilt */
+  }
+
+  /* Welcome Text Styling */
+  h1 {
+    font-family: 'Luckiest Guy', cursive;
+    color: #009999; /* Darker Teal */
+    text-align: center;
+    font-size: 2.8rem;
+    text-shadow: 2px 2px #FFDE21; /* Bright Yellow text shadow */
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .welcome-message {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #555;
+    margin-bottom: 2rem;
   }
 
   /* Navigation Bar Styling - Energetic Lavender */
@@ -101,7 +124,7 @@
     max-width: 680px;
     margin: 2.5rem auto;
     background-color: #FFFFF0; /* Very light sunny yellow for quiz background */
-    border-radius: 15px; /* Rounded corners */
+    border-radius: 15px;
     padding: 30px 40px;
     box-shadow: 0 6px 20px rgba(211, 211, 255, 0.3); /* Lavender-tinted shadow */
     border: 3px solid #00FFFF; /* Teal border */
@@ -217,10 +240,20 @@
   @media (max-width: 768px) {
     header {
       font-size: 2.5rem;
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      gap: 5px; /* Reduce gap */
     }
     header .quizzy-svg {
-      height: 55px;
-      left: 15px;
+      height: 55px; /* Adjust size for tablet */
+      position: static; /* Remove absolute positioning */
+      transform: none; /* Remove transform */
+      margin: 0; /* Remove specific margins */
+    }
+    h1 {
+      font-size: 2.2rem;
+    }
+    .welcome-message {
+      font-size: 1.1rem;
     }
     nav button {
       font-size: 0.75rem;
@@ -250,9 +283,18 @@
     header {
       font-size: 2rem;
       padding: 1rem 0;
+      flex-direction: column;
+      gap: 5px;
     }
     header .quizzy-svg {
-      display: none; /* Hide mascot on very small screens for space */
+      height: 40px;
+      margin: 0;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    .welcome-message {
+      font-size: 1.0rem;
     }
     nav {
       gap: 8px;
@@ -273,7 +315,7 @@
       font-size: 0.9rem;
     }
     p {
-      font-size: 1rem;
+      font-size: 1.0rem;
     }
   }
 </style>
@@ -305,6 +347,9 @@
   </svg>
   Quizinac™
 </header>
+
+<h1>Welcome to Quizinac™!</h1>
+<p class="welcome-message">Fun personality quizzes about your vibe, style, and more!</p>
 
 <nav>
   <!-- Navigation buttons to switch between quizzes -->
@@ -535,9 +580,51 @@
     document.getElementById(id).style.display = 'block';
   }
 
-  // Quiz Calculation Functions (JavaScript remains the same as before, ensuring accuracy)
+  // Define customMessageBox and hideMessageBox functions globally if they aren't already
+  // These are usually defined in a larger script or imported. For this context, assuming they exist or defining minimally.
+  const customMessageBox = document.getElementById('customMessageBox') || document.createElement('div');
+  customMessageBox.id = 'customMessageBox';
+  customMessageBox.className = 'custom-message-box';
+  if (!document.body.contains(customMessageBox)) {
+      document.body.appendChild(customMessageBox);
+  }
 
-  // Calculate result for Neat or Messy quiz
+  const customMessageText = document.getElementById('customMessageText') || document.createElement('p');
+  customMessageText.id = 'customMessageText';
+  if (!customMessageBox.contains(customMessageText)) {
+      const contentDiv = document.createElement('div');
+      contentDiv.className = 'custom-message-content';
+      contentDiv.appendChild(customMessageText);
+      customMessageBox.appendChild(contentDiv);
+  }
+
+  const customMessageBoxButtonsContainer = customMessageBox.querySelector('.message-box-buttons') || document.createElement('div');
+  customMessageBoxButtonsContainer.className = 'message-box-buttons';
+  if (!customMessageBox.querySelector('.custom-message-content').contains(customMessageBoxButtonsContainer)) {
+      customMessageBox.querySelector('.custom-message-content').appendChild(customMessageBoxButtonsContainer);
+  }
+
+  function showMessageBox(message, buttonsConfig) {
+    customMessageText.textContent = message;
+    customMessageBoxButtonsContainer.innerHTML = ''; // Clear existing buttons
+
+    buttonsConfig.forEach(buttonConf => {
+        const button = document.createElement('button');
+        button.textContent = buttonConf.text;
+        button.onclick = buttonConf.onClick;
+        customMessageBoxButtonsContainer.appendChild(button);
+    });
+
+    customMessageBox.style.display = 'flex';
+  }
+
+  function hideMessageBox() {
+    customMessageBox.style.display = 'none';
+  }
+
+
+  // Quiz Calculation Functions (JavaScript for individual quizzes)
+
   function calculateNeatMessy() {
     const form = document.getElementById('quizNeatMessyForm');
     const color = form.color.value;
@@ -545,7 +632,7 @@
     const sleep = form.sleep.value;
 
     if (!color || !onlyChild || !sleep) {
-      alert('Please answer all questions!');
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
       return;
     }
 
@@ -566,7 +653,6 @@
     document.getElementById('resultNeatMessy').textContent = message;
   }
 
-  // Calculate result for Brave or Fearful quiz
   function calculateBraveFearful() {
     const form = document.getElementById('quizBraveFearfulForm');
     const env = form.environment.value;
@@ -574,7 +660,7 @@
     const mood = form.mood.value;
 
     if (!env || !color || !mood) {
-      alert('Please answer all questions!');
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
       return;
     }
 
@@ -595,7 +681,6 @@
     document.getElementById('resultBraveFearful').textContent = message;
   }
 
-  // Calculate result for What Color Are You quiz
   function calculateColor() {
     const form = document.getElementById('quizColorForm');
     const weather = parseInt(form.weather.value);
@@ -603,7 +688,7 @@
     const utensil = parseInt(form.utensil.value);
 
     if (isNaN(weather) || isNaN(shape) || isNaN(utensil)) {
-      alert('Please answer all questions!');
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
       return;
     }
 
@@ -616,10 +701,9 @@
     else if (total >= 12 && total <= 14) colorResult = 'BLUE';
     else if (total >= 15) colorResult = 'PURPLE';
 
-    document.getElementById('resultColor').textContent = 'You are ' + colorResult + '! 🌈';
+    document.getElementById('resultColor').textContent = 'You are ' + colorResult + '! �';
   }
 
-  // Calculate result for What Shape Are You quiz
   function calculateShape() {
     const form = document.getElementById('quizShapeForm');
     const color = parseInt(form.color.value);
@@ -627,7 +711,7 @@
     const utensil = parseInt(form.utensil.value);
 
     if (isNaN(color) || isNaN(weather) || isNaN(utensil)) {
-      alert('Please answer all questions!');
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
       return;
     }
 
@@ -643,7 +727,6 @@
     document.getElementById('resultShape').textContent = 'You are a ' + shapeResult + '! ✨';
   }
 
-  // Calculate result for What Emotion Are You quiz
   function calculateEmotion() {
     const form = document.getElementById('quizEmotionForm');
     const color = parseInt(form.color.value);
@@ -651,7 +734,7 @@
     const weather = parseInt(form.weather.value);
 
     if (isNaN(color) || isNaN(shape) || isNaN(weather)) {
-      alert('Please answer all questions!');
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
       return;
     }
 
@@ -667,7 +750,6 @@
     document.getElementById('resultEmotion').textContent = 'You feel ' + resultEmotion + '! 😊';
   }
 
-  // Calculate result for What Weather Are You quiz
   function calculateWeather() {
     const form = document.getElementById('quizWeatherForm');
     const color = parseInt(form.color.value);
@@ -675,14 +757,14 @@
     const music = parseInt(form.music.value);
 
     if (isNaN(color) || isNaN(shape) || isNaN(music)) {
-      alert('Please answer all questions!');
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
       return;
     }
 
     let total = color + shape + music;
 
     let resultWeather = '';
-    if (total >= 3 && total <= 5) resultWeather = 'Sunny';
+    if (total >= 3 && total >= 5) resultWeather = 'Sunny';
     else if (total >= 6 && total <= 8) resultWeather = 'Rainy';
     else if (total >= 9 && total <= 11) resultWeather = 'Snowy';
     else if (total >= 12 && total <= 14) resultWeather = 'Cloudy';
@@ -691,7 +773,6 @@
     document.getElementById('resultWeather').textContent = 'You are ' + resultWeather + ' weather! 🌦️';
   }
 
-  // Calculate result for What House Suits You quiz
   function calculateHouse() {
     const form = document.getElementById('quizHouseForm');
     const color = parseInt(form.color.value);
@@ -699,7 +780,7 @@
     const animal = parseInt(form.animal.value);
 
     if (isNaN(color) || isNaN(music) || isNaN(animal)) {
-      alert('Please answer all questions!');
+      showMessageBox("Please answer all questions!", [{ text: "OK", onClick: hideMessageBox }]);
       return;
     }
 
@@ -724,8 +805,11 @@
   }
 
   // Initially show the first quiz when the page loads
-  showQuiz('neatMessy');
+  document.addEventListener('DOMContentLoaded', () => {
+    showQuiz('neatMessy');
+  });
 </script>
 
 </body>
 </html>
+�
