@@ -347,7 +347,7 @@
   Quizinac™
 </header>
 
-<h1>Welcome to Quizinac!</h1>
+<h1>Welcome to Quizinac™!</h1>
 <p class="welcome-message">Fun personality quizzes about your vibe, style, and more!</p>
 
 <nav>
@@ -356,8 +356,8 @@
   <button onclick="showQuiz('braveFearful')">Brave or Fearful?</button>
   <button onclick="showQuiz('colorYou')">What Color Are YOU?</button>
   <button onclick="showQuiz('shapeYou')">Find Your Shape!</button>
-  <button onclick="showQuiz('emotionYou')">What Are You Feeling?</button>
-  <button onclick="showQuiz('weatherYou')">What's your Weather?</button>
+  <button onclick="showQuiz('emotionYou')">What's Your Vibe!</button>
+  <button onclick="showQuiz('weatherYou')">Weather Your Soul!</button>
   <button onclick="showQuiz('houseYou')">Dream Home!</button>
 </nav>
 
@@ -419,14 +419,14 @@
     <label><input type="radio" name="shape" value="2" /> Triangle</label>
     <label><input type="radio" name="shape" value="3" /> Square</label>
     <label><input type="radio" name="shape" value="4" /> Hexagon</label>
-    <label><input type="radio" name="shape" value="5" /> Rectangle</label>
+    <label><input type="radio" name="5" /> Rectangle</label>
 
     <p>What's your favorite utensil?</p>
     <label><input type="radio" name="utensil" value="1" /> Knife</label>
     <label><input type="radio" name="utensil" value="2" /> Spoon</label>
     <label><input type="radio" name="utensil" value="3" /> Spork</label>
     <label><input type="radio" name="utensil" value="4" /> Fork</label>
-    <label><input type="radio" name="utensil" value="5" /> Chopsticks</label>
+    <label><input type="radio" name="5" /> Chopsticks</label>
 
     <button type="button" class="result-btn" onclick="calculateColor()">See Result</button>
   </form>
@@ -442,21 +442,21 @@
     <label><input type="radio" name="color" value="2" /> Green</label>
     <label><input type="radio" name="color" value="3" /> Orange</label>
     <label><input type="radio" name="color" value="4" /> Blue</label>
-    <label><input type="radio" name="color" value="5" /> Yellow</label>
+    <label><input type="radio" name="5" /> Yellow</label>
 
     <p>Favorite weather?</p>
     <label><input type="radio" name="weather" value="1" /> Rain</label>
     <label><input type="radio" name="weather" value="2" /> Sunny</label>
     <label><input type="radio" name="weather" value="3" /> Thunder</label>
     <label><input type="radio" name="weather" value="4" /> Snowy</label>
-    <label><input type="radio" name="weather" value="5" /> Cloudy</label>
+    <label><input type="radio" name="5" /> Cloudy</label>
 
     <p>Favorite utensil?</p>
     <label><input type="radio" name="utensil" value="1" /> Spoon</label>
     <label><input type="radio" name="utensil" value="2" /> Spork</label>
     <label><input type="radio" name="utensil" value="3" /> Fork</label>
-    <label><input type="radio" name="utensil" value="4" /> Chopsticks</label>
-    <label><input type="radio" name="utensil" value="5" /> Knife</label>
+    <label><input type="radio" name="4" /> Chopsticks</label>
+    <label><input type="radio" name="5" /> Knife</label>
 
     <button type="button" class="result-btn" onclick="calculateShape()">See Result</button>
   </form>
@@ -472,7 +472,7 @@
     <label><input type="radio" name="color" value="2" /> Blue</label>
     <label><input type="radio" name="color" value="3" /> Orange</label>
     <label><input type="radio" name="color" value="4" /> Purple</label>
-    <label><input type="radio" name="color" value="5" /> Red</label>
+    <label><input type="radio" name="5" /> Red</label>
 
     <p>Favorite shape?</p>
     <label><input type="radio" name="shape" value="1" /> Square</label>
@@ -648,7 +648,7 @@
     if (neatCount > messyCount) {
       message = 'You are Neat! ✨';
     } else if (messyCount > neatCount) {
-      message = 'You are Messy! 🎉';
+      message = 'You are Messy! �';
     } else {
       message = 'You are a mix of Neat and Messy! ⚖️';
     }
@@ -703,7 +703,7 @@
     else if (total >= 12 && total <= 14) colorResult = 'BLUE';
     else if (total >= 15) colorResult = 'PURPLE';
 
-    document.getElementById('resultColor').textContent = 'You are ' + colorResult + '! �';
+    document.getElementById('resultColor').textContent = 'You are ' + colorResult + '! 🌈';
   }
 
   function calculateShape() {
