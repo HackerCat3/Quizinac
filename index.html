@@ -7,8 +7,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Favicon (NEW: Redesigned 'Q' with blue/purple gradient, sharp lines, no outline) -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='qGradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230000CD'/%3E%3Cstop offset='100%25' stop-color='%238A2BE2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='none'/%3E%3Cpath d='M 50,10 A 40,40 0 1,0 50,90 A 40,40 0 1,0 50,10 Z' fill='url(%23qGradient)' stroke='none'/%3E%3Ccircle cx='50' cy='50' r='25' fill='white' stroke='none'/%3E%3Cpath d='M 60,65 L 75,80 L 70,90 L 55,75 Z' fill='url(%23qGradient)' stroke='none'/%3E%3C/svg%3E">
+<!-- Favicon (NEW: Redesigned 'Q' with blue/purple gradient, sharp lines, NO white spot) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='qGradient' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2342A5F5'/%3E%3Cstop offset='100%25' stop-color='%23AB47BC'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' fill='none'/%3E%3Cpath d='M 50,10 A 40,40 0 1,0 50,90 A 40,40 0 1,0 50,10 Z' fill='url(%23qGradient)' stroke='none'/%3E%3Cpath d='M 60,65 L 75,80 L 70,90 L 55,75 Z' fill='url(%23qGradient)' stroke='none'/%3E%3C/svg%3E">
 
 <!-- Google Fonts for a vibrant, fun feel -->
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Luckiest+Guy&display=swap" rel="stylesheet" />
@@ -332,7 +332,6 @@
     <!-- Eyes -->
     <line x1="38" y1="45" x2="38" y2="48" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
     <line x1="62" y1="45" x2="62" y2="48" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
-    <!-- Smile -->
     <path d="M35 55 Q50 65, 65 55" stroke="#000000" stroke-width="3" fill="none" stroke-linecap="round"/>
     <!-- Wavy lines below smile -->
     <path d="M25 70 C35 75, 65 75, 75 70" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
@@ -487,7 +486,7 @@
     <label><input type="radio" name="weather" value="2" /> Cloudy</label>
     <label><input type="radio" name="weather" value="3" /> Thunder</label>
     <label><input type="radio" name="weather" value="4" /> Sunny</label>
-    <label><input type="radio" name="weather" value="5" /> Snow</label>
+    <label><input type="radio" name="5" /> Snow</label>
 
     <button type="button" class="result-btn" onclick="calculateEmotion()">See Result</button>
   </form>
@@ -517,7 +516,7 @@
     <label><input type="radio" name="music" value="2" /> Jazz</label>
     <label><input type="radio" name="music" value="3" /> Pop</label>
     <label><input type="radio" name="music" value="4" /> Rock</label>
-    <label><input type="radio" name="music" value="5" /> Classical</label>
+    <label><input type="radio" name="5" /> Classical</label>
 
     <button type="button" class="result-btn" onclick="calculateWeather()">See Result</button>
   </form>
@@ -539,15 +538,15 @@
     <label><input type="radio" name="music" value="1" /> Jazz</label>
     <label><input type="radio" name="music" value="2" /> Pop</label>
     <label><input type="radio" name="music" value="3" /> Rock</label>
-    <label><input type="radio" name="music" value="4" /> Classical</label>
-    <label><input type="radio" name="music" value="5" /> Hip-hop</label>
+    <label><input type="radio" name="4" /> Classical</label>
+    <label><input type="radio" name="5" /> Hip-hop</label>
 
     <p>Favorite animal?</p>
     <label><input type="radio" name="animal" value="1" /> Fish</label>
     <label><input type="radio" name="animal" value="2" /> Reptiles</label>
     <label><input type="radio" name="animal" value="3" /> Mammal</label>
-    <label><input type="radio" name="animal" value="4" /> Bird</label>
-    <label><input type="radio" name="animal" value="5" /> Amphibians</label>
+    <label><input type="radio" name="4" /> Bird</label>
+    <label><input type="radio" name="5" /> Amphibians</label>
 
     <button type="button" class="result-btn" onclick="calculateHouse()">See Result</button>
   </form>
@@ -563,6 +562,7 @@
     <line x1="38" y1="45" x2="38" y2="48" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
     <line x1="62" y1="45" x2="62" y2="48" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
     <path d="M35 55 Q50 65, 65 55" stroke="#000000" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Wavy lines below smile -->
     <path d="M25 70 C35 75, 65 75, 75 70" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
     <path d="M20 78 C30 83, 70 83, 80 78" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
     <path d="M25 86 C35 91, 65 91, 75 86" stroke="#000000" stroke-width="2" fill="none" stroke-linecap="round"/>
