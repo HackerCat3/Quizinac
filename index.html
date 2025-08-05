@@ -3,7 +3,7 @@
 <head>
 <title>Quizinac.com</title>
 <meta name="google-site-verification" content="1VaYDmAfiEyS9tn2KpiIFLUENGSg0_cv02YSLb7Z09Y" />
-<meta name="description" content="Welcome to Quizinac - Fun personality quizzes for everyone!" />
+<meta name="description" content="Quizinac.com - Fun personality quizzes for everyone!" />
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -215,6 +215,59 @@
     100% { opacity: 1; transform: scale(1); }
   }
 
+  /* Custom Message Box for alerts */
+  .custom-message-box {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .custom-message-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 80%;
+    animation: popIn 0.3s ease-out;
+    border: 3px solid #009999;
+  }
+
+  .custom-message-content p {
+    font-family: 'Comic Neue', cursive;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .message-box-buttons button {
+    background-color: #009999;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-family: 'Comic Neue', cursive;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .message-box-buttons button:hover {
+    background-color: #007777;
+  }
+
+  @keyframes popIn {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
   /* Footer Styling - Consistent Vibrant Theme with Teal */
   footer {
     text-align: center;
@@ -344,7 +397,7 @@
     <line x1="30" y1="95" x2="20" y2="100" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
     <line x1="70" y1="95" x2="80" y2="100" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
   </svg>
-  Quizinac™
+  Quizinac.com
 </header>
 
 <h1>Welcome to Quizinac™!</h1>
@@ -419,14 +472,14 @@
     <label><input type="radio" name="shape" value="2" /> Triangle</label>
     <label><input type="radio" name="shape" value="3" /> Square</label>
     <label><input type="radio" name="shape" value="4" /> Hexagon</label>
-    <label><input type="radio" name="5" /> Rectangle</label>
+    <label><input type="radio" name="shape" value="5" /> Rectangle</label>
 
     <p>What's your favorite utensil?</p>
     <label><input type="radio" name="utensil" value="1" /> Knife</label>
     <label><input type="radio" name="utensil" value="2" /> Spoon</label>
     <label><input type="radio" name="utensil" value="3" /> Spork</label>
     <label><input type="radio" name="utensil" value="4" /> Fork</label>
-    <label><input type="radio" name="5" /> Chopsticks</label>
+    <label><input type="radio" name="utensil" value="5" /> Chopsticks</label>
 
     <button type="button" class="result-btn" onclick="calculateColor()">See Result</button>
   </form>
@@ -442,21 +495,21 @@
     <label><input type="radio" name="color" value="2" /> Green</label>
     <label><input type="radio" name="color" value="3" /> Orange</label>
     <label><input type="radio" name="color" value="4" /> Blue</label>
-    <label><input type="radio" name="5" /> Yellow</label>
+    <label><input type="radio" name="color" value="5" /> Yellow</label>
 
     <p>Favorite weather?</p>
     <label><input type="radio" name="weather" value="1" /> Rain</label>
     <label><input type="radio" name="weather" value="2" /> Sunny</label>
     <label><input type="radio" name="weather" value="3" /> Thunder</label>
     <label><input type="radio" name="weather" value="4" /> Snowy</label>
-    <label><input type="radio" name="5" /> Cloudy</label>
+    <label><input type="radio" name="weather" value="5" /> Cloudy</label>
 
     <p>Favorite utensil?</p>
     <label><input type="radio" name="utensil" value="1" /> Spoon</label>
     <label><input type="radio" name="utensil" value="2" /> Spork</label>
     <label><input type="radio" name="utensil" value="3" /> Fork</label>
-    <label><input type="radio" name="4" /> Chopsticks</label>
-    <label><input type="radio" name="5" /> Knife</label>
+    <label><input type="radio" name="utensil" value="4" /> Chopsticks</label>
+    <label><input type="radio" name="utensil" value="5" /> Knife</label>
 
     <button type="button" class="result-btn" onclick="calculateShape()">See Result</button>
   </form>
@@ -472,21 +525,21 @@
     <label><input type="radio" name="color" value="2" /> Blue</label>
     <label><input type="radio" name="color" value="3" /> Orange</label>
     <label><input type="radio" name="color" value="4" /> Purple</label>
-    <label><input type="radio" name="5" /> Red</label>
+    <label><input type="radio" name="color" value="5" /> Red</label>
 
     <p>Favorite shape?</p>
     <label><input type="radio" name="shape" value="1" /> Square</label>
     <label><input type="radio" name="shape" value="2" /> Circle</label>
     <label><input type="radio" name="shape" value="3" /> Star</label>
     <label><input type="radio" name="shape" value="4" /> Parallelogram</label>
-    <label><input type="radio" name="5" /> Triangle</label>
+    <label><input type="radio" name="shape" value="5" /> Triangle</label>
 
     <p>Favorite weather?</p>
     <label><input type="radio" name="weather" value="1" /> Rainy</label>
     <label><input type="radio" name="weather" value="2" /> Cloudy</label>
     <label><input type="radio" name="weather" value="3" /> Thunder</label>
     <label><input type="radio" name="weather" value="4" /> Sunny</label>
-    <label><input type="radio" name="5" /> Snow</label>
+    <label><input type="radio" name="weather" value="5" /> Snow</label>
 
     <button type="button" class="result-btn" onclick="calculateEmotion()">See Result</button>
   </form>
@@ -502,21 +555,21 @@
     <label><input type="radio" name="color" value="2" /> Red</label>
     <label><input type="radio" name="color" value="3" /> Blue</label>
     <label><input type="radio" name="color" value="4" /> Orange</label>
-    <label><input type="radio" name="5" /> Purple</label>
+    <label><input type="radio" name="color" value="5" /> Purple</label>
 
     <p>Favorite shape?</p>
     <label><input type="radio" name="shape" value="1" /> Square</label>
     <label><input type="radio" name="shape" value="2" /> Circle</label>
     <label><input type="radio" name="shape" value="3" /> Diamond</label>
     <label><input type="radio" name="shape" value="4" /> Star</label>
-    <label><input type="radio" name="5" /> Triangle</label>
+    <label><input type="radio" name="shape" value="5" /> Triangle</label>
 
     <p>Favorite music?</p>
     <label><input type="radio" name="music" value="1" /> Hip-hop</label>
     <label><input type="radio" name="music" value="2" /> Jazz</label>
     <label><input type="radio" name="music" value="3" /> Pop</label>
-    <label><input type="radio" name="4" /> Rock</label>
-    <label><input type="radio" name="5" /> Classical</label>
+    <label><input type="radio" name="music" value="4" /> Rock</label>
+    <label><input type="radio" name="music" value="5" /> Classical</label>
 
     <button type="button" class="result-btn" onclick="calculateWeather()">See Result</button>
   </form>
@@ -532,21 +585,21 @@
     <label><input type="radio" name="color" value="2" /> Blue</label>
     <label><input type="radio" name="color" value="3" /> Green</label>
     <label><input type="radio" name="color" value="4" /> Red</label>
-    <label><input type="radio" name="5" /> Orange</label>
+    <label><input type="radio" name="color" value="5" /> Orange</label>
 
     <p>Favorite music?</p>
     <label><input type="radio" name="music" value="1" /> Jazz</label>
     <label><input type="radio" name="music" value="2" /> Pop</label>
     <label><input type="radio" name="music" value="3" /> Rock</label>
-    <label><input type="radio" name="4" /> Classical</label>
-    <label><input type="radio" name="5" /> Hip-hop</label>
+    <label><input type="radio" name="music" value="4" /> Classical</label>
+    <label><input type="radio" name="music" value="5" /> Hip-hop</label>
 
     <p>Favorite animal?</p>
     <label><input type="radio" name="animal" value="1" /> Fish</label>
     <label><input type="radio" name="animal" value="2" /> Reptiles</label>
     <label><input type="radio" name="animal" value="3" /> Mammal</label>
-    <label><input type="radio" name="4" /> Bird</label>
-    <label><input type="radio" name="5" /> Amphibians</label>
+    <label><input type="radio" name="animal" value="4" /> Bird</label>
+    <label><input type="radio" name="animal" value="5" /> Amphibians</label>
 
     <button type="button" class="result-btn" onclick="calculateHouse()">See Result</button>
   </form>
@@ -582,29 +635,24 @@
     document.getElementById(id).style.display = 'block';
   }
 
-  // Define customMessageBox and hideMessageBox functions globally if they aren't already
-  // These are usually defined in a larger script or imported. For this context, assuming they exist or defining minimally.
-  const customMessageBox = document.getElementById('customMessageBox') || document.createElement('div');
+  // --- Start of Custom Message Box Implementation ---
+  // This is a replacement for `alert()` and `confirm()` as they are not supported.
+  const customMessageBox = document.createElement('div');
   customMessageBox.id = 'customMessageBox';
   customMessageBox.className = 'custom-message-box';
-  if (!document.body.contains(customMessageBox)) {
-      document.body.appendChild(customMessageBox);
-  }
+  document.body.appendChild(customMessageBox);
 
-  const customMessageText = document.getElementById('customMessageText') || document.createElement('p');
+  const customMessageContent = document.createElement('div');
+  customMessageContent.className = 'custom-message-content';
+  customMessageBox.appendChild(customMessageContent);
+
+  const customMessageText = document.createElement('p');
   customMessageText.id = 'customMessageText';
-  if (!customMessageBox.contains(customMessageText)) {
-      const contentDiv = document.createElement('div');
-      contentDiv.className = 'custom-message-content';
-      contentDiv.appendChild(customMessageText);
-      customMessageBox.appendChild(contentDiv);
-  }
+  customMessageContent.appendChild(customMessageText);
 
-  const customMessageBoxButtonsContainer = customMessageBox.querySelector('.message-box-buttons') || document.createElement('div');
+  const customMessageBoxButtonsContainer = document.createElement('div');
   customMessageBoxButtonsContainer.className = 'message-box-buttons';
-  if (!customMessageBox.querySelector('.custom-message-content').contains(customMessageBoxButtonsContainer)) {
-      customMessageBox.querySelector('.custom-message-content').appendChild(customMessageBoxButtonsContainer);
-  }
+  customMessageContent.appendChild(customMessageBoxButtonsContainer);
 
   function showMessageBox(message, buttonsConfig) {
     customMessageText.textContent = message;
@@ -623,7 +671,7 @@
   function hideMessageBox() {
     customMessageBox.style.display = 'none';
   }
-
+  // --- End of Custom Message Box Implementation ---
 
   // Quiz Calculation Functions (JavaScript for individual quizzes)
 
@@ -685,6 +733,8 @@
 
   function calculateColor() {
     const form = document.getElementById('quizColorForm');
+    // The issue was here: the name attributes for some radio buttons were wrong.
+    // I have corrected the HTML to match the JS variable names.
     const weather = parseInt(form.weather.value);
     const shape = parseInt(form.shape.value);
     const utensil = parseInt(form.utensil.value);
@@ -708,6 +758,8 @@
 
   function calculateShape() {
     const form = document.getElementById('quizShapeForm');
+    // The issue was here: the name attributes for some radio buttons were wrong.
+    // I have corrected the HTML to match the JS variable names.
     const color = parseInt(form.color.value);
     const weather = parseInt(form.weather.value);
     const utensil = parseInt(form.utensil.value);
@@ -731,6 +783,8 @@
 
   function calculateEmotion() {
     const form = document.getElementById('quizEmotionForm');
+    // The issue was here: the name attributes for some radio buttons were wrong.
+    // I have corrected the HTML to match the JS variable names.
     const color = parseInt(form.color.value);
     const shape = parseInt(form.shape.value);
     const weather = parseInt(form.weather.value);
@@ -754,6 +808,8 @@
 
   function calculateWeather() {
     const form = document.getElementById('quizWeatherForm');
+    // The issue was here: the name attributes for some radio buttons were wrong.
+    // I have corrected the HTML to match the JS variable names.
     const color = parseInt(form.color.value);
     const shape = parseInt(form.shape.value);
     const music = parseInt(form.music.value);
@@ -777,6 +833,8 @@
 
   function calculateHouse() {
     const form = document.getElementById('quizHouseForm');
+    // The issue was here: the name attributes for some radio buttons were wrong.
+    // I have corrected the HTML to match the JS variable names.
     const color = parseInt(form.color.value);
     const music = parseInt(form.music.value);
     const animal = parseInt(form.animal.value);
