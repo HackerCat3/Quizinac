@@ -696,7 +696,7 @@
     if (neatCount > messyCount) {
       message = 'You are Neat! ✨';
     } else if (messyCount > neatCount) {
-      message = 'You are Messy! �';
+      message = 'You are Messy! 🎉';
     } else {
       message = 'You are a mix of Neat and Messy! ⚖️';
     }
@@ -808,8 +808,6 @@
 
   function calculateWeather() {
     const form = document.getElementById('quizWeatherForm');
-    // The issue was here: the name attributes for some radio buttons were wrong.
-    // I have corrected the HTML to match the JS variable names.
     const color = parseInt(form.color.value);
     const shape = parseInt(form.shape.value);
     const music = parseInt(form.music.value);
@@ -822,7 +820,8 @@
     let total = color + shape + music;
 
     let resultWeather = '';
-    if (total >= 3 && total >= 5) resultWeather = 'Sunny';
+    // CORRECTED LOGIC HERE
+    if (total >= 3 && total <= 5) resultWeather = 'Sunny';
     else if (total >= 6 && total <= 8) resultWeather = 'Rainy';
     else if (total >= 9 && total <= 11) resultWeather = 'Snowy';
     else if (total >= 12 && total <= 14) resultWeather = 'Cloudy';
@@ -872,4 +871,3 @@
 
 </body>
 </html>
-�
